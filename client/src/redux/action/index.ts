@@ -10,7 +10,7 @@ import {
 const ENV = process.env;
 
 console.log(ENV.REACT_APP_API_URL, "AAAAAAAAAAAAAA")
-
+//console.log()
 export function getProducts(page?: number) {
   try {
     return async function name(dispatch: any) {
