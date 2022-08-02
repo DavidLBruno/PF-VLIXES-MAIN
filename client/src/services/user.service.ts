@@ -3,41 +3,41 @@ import axios from "axios";
 import { InfoProps } from "components/ProfileCard/UserInfo";
 import { AddressProps } from "components/ProfileCard/UserInfo";
 // Env
-const API_URL = "https://vlixes-server.herokuapp.com";
+const ENV = process.env;
 
 async function getUser() {
-  return await axios.get(`${API_URL}/users`);
+  return await axios.get(`${ENV.REACT_APP_API_URL}users`);
 }
 
 async function updateUser(data: InfoProps["data"]) {
   const { email: _1, avatar: _2, ...req } = data;
-  return await axios.put(`${API_URL}/users`, req);
+  return await axios.put(`${ENV.REACT_APP_API_URL}users`, req);
 }
 
 async function updateAvatar(data: { avatar: string }) {
-  return await axios.put(`${API_URL}/users/avatar`, data);
+  return await axios.put(`${ENV.REACT_APP_API_URL}users/avatar`, data);
 }
 
 async function deleteAvatar() {
-  return await axios.delete(`${API_URL}/users/avatar`);
+  return await axios.delete(`${ENV.REACT_APP_API_URL}users/avatar`);
 }
 
 async function addShippingAddress(data: AddressProps["data"]) {
   const { id: _, ...req } = data;
-  return await axios.post(`${API_URL}/users/address`, req);
+  return await axios.post(`${ENV.REACT_APP_API_URL}users/address`, req);
 }
 
 async function updateShippingAddress(data: AddressProps["data"]) {
   const { id, ...req } = data;
-  return await axios.put(`${API_URL}/users/address/${id}`, req);
+  return await axios.put(`${ENV.REACT_APP_API_URL}users/address/${id}`, req);
 }
 
 async function deleteShippingAddress(id: AddressProps["data"]["id"]) {
-  return await axios.delete(`${API_URL}/users/address/${id}`);
+  return await axios.delete(`${ENV.REACT_APP_API_URL}users/address/${id}`);
 }
 
 async function getUserOrders() {
-  return await axios.get(`${API_URL}/users/orders`);
+  return await axios.get(`${ENV.REACT_APP_API_URL}users/orders`);
 }
 
 const user = {

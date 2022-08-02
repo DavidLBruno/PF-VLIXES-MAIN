@@ -15,6 +15,8 @@ import UserService from "services/user.service";
 import { InfoProps } from "components/ProfileCard/UserInfo";
 import { AddressProps } from "components/ProfileCard/UserInfo";
 
+const ENV = process.env;
+
 export function getUser() {
   return async (dispatch: any) => {
     try {
@@ -200,7 +202,7 @@ export function deleteShippingAddress(id: number) {
 export function getUserOrders() {
   try {
     return async function orders(dispatch: any) {
-      let json: any = await axios.get(`https://vlixes-server.herokuapp.com/buys/user`);
+      let json: any = await axios.get(`${ENV.REACT_APP_API_URL}buys/user`);
       return dispatch({
         type: GET_USER_ORDERS,
         payload: json.data,
