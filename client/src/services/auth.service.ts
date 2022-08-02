@@ -7,7 +7,7 @@ function register(
   email: string,
   password: string
 ) {
-  return axios.post(ENV.REACT_APP_API_URL + "users", {
+  return axios.post(ENV.REACT_APP_API_URL + "/users", {
     name,
     lastname,
     email,
@@ -16,7 +16,7 @@ function register(
 }
 
 async function login(email: string, password: string) {
-  const response = await axios.post(ENV.REACT_APP_API_URL + "users/login", {
+  const response = await axios.post(ENV.REACT_APP_API_URL + "/users/login", {
     email,
     password,
   });
@@ -33,7 +33,7 @@ function logout() {
 }
 
 function passwordRecovery(email: string) {
-  return axios.post(ENV.REACT_APP_API_URL + "mailer/password-recovery", {
+  return axios.post(ENV.REACT_APP_API_URL + "/mailer/password-recovery", {
     email,
   });
 }

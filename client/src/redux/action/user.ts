@@ -202,7 +202,7 @@ export function deleteShippingAddress(id: number) {
 export function getUserOrders() {
   try {
     return async function orders(dispatch: any) {
-      let json: any = await axios.get(`${ENV.REACT_APP_API_URL}buys/user`);
+      let json: any = await axios.get(`${ENV.REACT_APP_API_URL}/buys/user`);
       return dispatch({
         type: GET_USER_ORDERS,
         payload: json.data,

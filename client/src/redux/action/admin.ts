@@ -15,7 +15,7 @@ export const getAllProducts =
   (page?: number, limit?: string) => async (dispatch: any) => {
     try {
       const response = await axios.get(
-        `${ENV.REACT_APP_API_URL}products?pag=${page ? page : 1}&limit=${limit ? limit : 5}`
+        `${ENV.REACT_APP_API_URL}/products?pag=${page ? page : 1}&limit=${limit ? limit : 5}`
       );
       return dispatch({
         type: "ALL_PRODUCTS",
@@ -27,7 +27,7 @@ export const getAllProducts =
   };
 export const getProductsByName = (name: any) => async (dispatch: any) => {
   try {
-    const response = await axios.get(`${ENV.REACT_APP_API_URL}products?title=${name}`);
+    const response = await axios.get(`${ENV.REACT_APP_API_URL}/products?title=${name}`);
     return dispatch({
       type: "GET_PRODUCT_BY_NAME",
       payload: response.data,
@@ -38,7 +38,7 @@ export const getProductsByName = (name: any) => async (dispatch: any) => {
 };
 export const deleteProduct = (id: number) => async (dispatch: any) => {
   try {
-    const response: any = await axios.delete(`${ENV.REACT_APP_API_URL}products/${id}`);
+    const response: any = await axios.delete(`${ENV.REACT_APP_API_URL}/products/${id}`);
     dispatch(getAllProducts());
   } catch (error) {
     console.log(error);
@@ -46,7 +46,7 @@ export const deleteProduct = (id: number) => async (dispatch: any) => {
 };
 export const getAllUsers = () => async (dispatch: any) => {
   try {
-    const response: any = await axios.get(`${ENV.REACT_APP_API_URL}users/all`);
+    const response: any = await axios.get(`${ENV.REACT_APP_API_URL}/users/all`);
     return dispatch({
       type: "GET_ALL_USERS",
       payload: response.data,
@@ -67,7 +67,7 @@ export const getUserByName = (name: string) => {
 };
 export const deleteUser = (id: number) => async (dispatch: any) => {
   try {
-    const response: any = await axios.delete(`${ENV.REACT_APP_API_URL}users/${id}`);
+    const response: any = await axios.delete(`${ENV.REACT_APP_API_URL}/users/${id}`);
     dispatch(getAllUsers());
     return response;
   } catch (error) {
@@ -80,7 +80,7 @@ export const deleteUser = (id: number) => async (dispatch: any) => {
 export function getOrders(pagination: string) {
   try {
     return async function order(dispatch: any) {
-      let json: any = await axios.get(`${ENV.REACT_APP_API_URL}buys${pagination}`);
+      let json: any = await axios.get(`${ENV.REACT_APP_API_URL}/buys${pagination}`);
       return dispatch({
         type: GET_ORDERS,
         payload: json.data,
@@ -94,7 +94,7 @@ export function getOrders(pagination: string) {
 export function getOrdersById(id: any) {
     try {
       return async function order(dispatch: any) {
-        let json: any = await axios.get(`${ENV.REACT_APP_API_URL}buys/${id}`);
+        let json: any = await axios.get(`${ENV.REACT_APP_API_URL}/buys/${id}`);
         return dispatch({
           type: GET_ORDERS_BY_ID,
           payload: json.data,
@@ -108,7 +108,7 @@ export function getOrdersById(id: any) {
 export function getOrderById(id: any) {
     try {
       return async function order(dispatch: any) {
-        let json: any = await axios.get(`${ENV.REACT_APP_API_URL}buys/${id}`);
+        let json: any = await axios.get(`${ENV.REACT_APP_API_URL}/buys/${id}`);
         return dispatch({
           type: GET_ORDER_BY_ID,
           payload: json.data,
@@ -123,7 +123,7 @@ export function getOrdersByState(state: any) {
   try {
     return async function orders(dispatch: any) {
       // vlixes-server.herokuapp.com/buys?status=Preparing order
-      let json: any = await axios.get(`${ENV.REACT_APP_API_URL}buys?status=${state}`);
+      let json: any = await axios.get(`${ENV.REACT_APP_API_URL}/buys?status=${state}`);
       return dispatch({
         type: GET_ORDERS_BY_STATE,
         payload: json.data,
@@ -138,7 +138,7 @@ export function getOrdersByState(state: any) {
 export function putStateToOrder(object: any) {
   try {
     return async function state(dispatch: any) {
-      let json: any = await axios.put(`${ENV.REACT_APP_API_URL}buys`, object);
+      let json: any = await axios.put(`${ENV.REACT_APP_API_URL}/buys`, object);
       dispatch(getOrderById(object.id));
     };
   } catch (error) {
@@ -150,7 +150,7 @@ export function putStateToOrder(object: any) {
 export function putTrackingNumber(object: any) {
   try {
     return async function state(dispatch: any) {
-      let json: any = await axios.put(`${ENV.REACT_APP_API_URL}buys/delivery`, object);
+      let json: any = await axios.put(`${ENV.REACT_APP_API_URL}/buys/delivery`, object);
       dispatch(getOrderById(object.shoppingId));
     };
   } catch (error) {
@@ -161,7 +161,7 @@ export function putTrackingNumber(object: any) {
 // Role
 export const isAdmin = (token: string) => async (dispatch: any) => {
   try {
-    const response = await axios.get(`${ENV.REACT_APP_API_URL}users/isAdmin?token=${token}`);
+    const response = await axios.get(`${ENV.REACT_APP_API_URL}/users/isAdmin?token=${token}`);
     return dispatch({
       type: "IS_ADMIN",
       payload: response.data.admin,

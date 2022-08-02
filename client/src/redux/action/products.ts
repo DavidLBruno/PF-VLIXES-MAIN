@@ -15,12 +15,12 @@ export const allProducts =
       const response = title
 
         ? await axios.get(
-            `${ENV.REACT_APP_API_URL}products?pag=${
+            `${ENV.REACT_APP_API_URL}/products?pag=${
               page ? page : 1
             }&limit=${3}&title=${title}&${order ? order : "order="}`
           )
         : await axios.get(
-            `${ENV.REACT_APP_API_URL}products?pag=${page ? page : 1}&limit=${3}&${
+            `${ENV.REACT_APP_API_URL}/products?pag=${page ? page : 1}&limit=${3}&${
               order ? order : "order="
             }&category=${category}&subCategory=${subCategory}`
           );
