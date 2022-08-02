@@ -32,6 +32,7 @@
     "morgan": "^1.10.0",
     "nanoid": "^3.3.4",
     "nodemailer": "^6.7.7",
+    "nodemon": "^2.0.19",
     "npm": "^8.14.0",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
@@ -41,7 +42,6 @@
     "stripe": "^9.13.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6",
     "supertest": "^6.2.4",
     "supertest-session": "^4.1.0"
   }
