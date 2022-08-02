@@ -9,7 +9,7 @@ import {
 } from "./types";
 const ENV = process.env;
 
-console.log(ENV, "AAAAAAAAAAAAAA")
+console.log(ENV.REACT_APP_API_URL, "AAAAAAAAAAAAAA")
 
 export function getProducts(page?: number) {
   try {
